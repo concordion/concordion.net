@@ -1,5 +1,4 @@
-﻿using System.Data;
-using ognl;
+﻿using ognl;
 using org.concordion.api;
 using org.concordion.@internal.util;
 
@@ -35,15 +34,6 @@ namespace Concordion.NET.Internal
 
         #region Methods
 
-        private void AssertStartsWithHash(string expression)
-        {
-            if (!expression.StartsWith("#"))
-            {
-                throw new InvalidExpressionException("Variable for concordion:set must start"
-                        + " with '#'\n (i.e. change concordion:set=\"" + expression + "\" to concordion:set=\"#" + expression + "\".");
-            }
-        }
-
         private void PutVariable(string rawVariableName, object value)
         {
             Check.isFalse(rawVariableName.StartsWith("#"), "Variable name passed to evaluator should not start with #");
@@ -53,18 +43,20 @@ namespace Concordion.NET.Internal
 
         #endregion
 
-        #region IEvaluator Members
+        #region Evaluator Members
 
         public virtual object getVariable(string expression)
         {
-            this.AssertStartsWithHash(expression);
+            Check.isTrue(expression.StartsWith("#"), "Variable for concordion:set must start"
+                        + " with '#'\n (i.e. change concordion:set=\"" + expression + "\" to concordion:set=\"#" + expression + "\".");
             string rawVariableName = expression.Substring(1);
             return this.OgnlContext[rawVariableName];
         }
 
         public virtual void setVariable(string expression, object value)
         {
-            this.AssertStartsWithHash(expression);
+            Check.isTrue(expression.StartsWith("#"), "Variable for concordion:set must start"
+                        + " with '#'\n (i.e. change concordion:set=\"" + expression + "\" to concordion:set=\"#" + expression + "\".");
             if (expression.Contains("="))
             {
                 this.evaluate(expression);
@@ -78,9 +70,16 @@ namespace Concordion.NET.Internal
 
         public virtual object evaluate(string expression)
         {
-            Check.notNull(this.Fixture, "Root object is null");
-            Check.notNull(expression, "Expression to evaluate cannot be null");
-            return Ognl.getValue(expression, this.OgnlContext, this.Fixture);
+            try
+            {
+                Check.notNull(this.Fixture, "Root object is null");
+                Check.notNull(expression, "Expression to evaluate cannot be null");
+                return Ognl.getValue(expression, this.OgnlContext, this.Fixture);
+            }
+            catch (OgnlException ognlException)
+            {
+                throw ognlException.getReason();
+            }
         }
 
         #endregion

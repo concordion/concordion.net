@@ -46,7 +46,7 @@ namespace Concordion.NUnit.Addin
             {
                 var testRunner = new DefaultConcordionRunner();
                 var concordionResult = testRunner.Run(Fixture);
-                testResult = NUnitTestResult(concordionResult, ""); //ToDo: testRunner.ResultPath);
+                testResult = NUnitTestResult(concordionResult, "");
             }
             catch (Exception exception)
             {
@@ -65,7 +65,7 @@ namespace Concordion.NUnit.Addin
             get { return "ConcordionTest"; }
         }
 
-        public override sealed object Fixture { get; set; }
+        public sealed override object Fixture { get; set; }
 
         #endregion
 
@@ -97,19 +97,10 @@ namespace Concordion.NUnit.Addin
 
             if (concordionResult.hasExceptions())
             {
-                //ToDo
-                //var errorDetails = concordionResult.ErrorDetails.First();
-                //testResult.Error(errorDetails.Exception);
-                //testResult.SetResult(testResult.ResultState, 
-                //                     resultPath + Environment.NewLine + testResult.Message, 
-                //                     testResult.StackTrace);
                 testResult.Error(new NUnitException("Exception in Concordion test: please see Concordion test reports"));
             }
             else if (concordionResult.getFailureCount() > 0)
             {
-                //ToDo
-                //var failureDetails = concordionResult.FailureDetails.First();
-                //testResult.Failure(resultPath + Environment.NewLine + failureDetails.Message, failureDetails.StackTrace);
                 testResult.Failure("Concordion Test Failures: " + concordionResult.getFailureCount(),
                                    "for stack trace, please see Concordion test reports");
             } else

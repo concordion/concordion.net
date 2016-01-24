@@ -23,7 +23,7 @@ namespace Concordion.Spec.Concordion.Configuration
                                  Path.DirectorySeparatorChar +
                                  this.GetType().Assembly.GetName().Name;
 
-            var specificationConfig = new SpecificationConfig().Load(this.GetType());
+            var specificationConfig = new SpecificationConfig().Load(this.GetType().Assembly);
             specificationConfig.BaseInputDirectory = baseInputDirectory;
             var testRunner = new DefaultConcordionRunner();
             var testResult = testRunner.Run(this, specificationConfig);
@@ -39,7 +39,7 @@ namespace Concordion.Spec.Concordion.Configuration
 
             m_InTestRun = true;
 
-            var specificationConfig = new SpecificationConfig().Load(this.GetType());
+            var specificationConfig = new SpecificationConfig().Load(this.GetType().Assembly);
             specificationConfig.BaseInputDirectory = null;
             var fixtureRunner = new DefaultConcordionRunner();
             var testResult = fixtureRunner.Run(this, specificationConfig);

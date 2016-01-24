@@ -2,13 +2,13 @@
 
 namespace Concordion.NET.Internal
 {
-    public class SimpleEvaluatorFactory : EvaluatorFactory
+    public class BridgingEvaluatorFactory : EvaluatorFactory
     {
         #region IEvaluatorFactory Members
 
         public Evaluator createEvaluator(object fixture)
         {
-            return new SimpleEvaluator(fixture);
+            return new BridgingEvaluator(fixture);
         }
 
         #endregion

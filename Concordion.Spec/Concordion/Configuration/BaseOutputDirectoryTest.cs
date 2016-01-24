@@ -26,7 +26,7 @@ namespace Concordion.Spec.Concordion.Configuration
                 {
                     File.Delete(reportFilePath);
                 }
-                var specificationConfig = new SpecificationConfig().Load(this.GetType());
+                var specificationConfig = new SpecificationConfig().Load(this.GetType().Assembly);
                 specificationConfig.BaseOutputDirectory = baseOutputDirectory;
                 var testRunner = new DefaultConcordionRunner();
                 var testResult = testRunner.Run(this, specificationConfig);

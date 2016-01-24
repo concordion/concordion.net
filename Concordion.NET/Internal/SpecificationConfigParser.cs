@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Xml.Linq;
 using Concordion.NET.Internal.Runner;
 
@@ -112,8 +110,7 @@ namespace Concordion.NET.Internal
         /// <param name="element">The element.</param>
         private void LoadRunners(XElement element)
         {
-            java.lang.System.setProperty("concordion.runner.concordion.net",
-                "Concordion.NET.Internal.Runner.DefaultConcordionRunner, Concordion.NET, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null");
+            Config.AddRunner("concordion.net", typeof(DefaultConcordionRunner).AssemblyQualifiedName);
             
             var runners = element.Element("Runners");
             if (runners == null) return;
@@ -123,8 +120,7 @@ namespace Concordion.NET.Internal
                 var alias = runner.Attribute("alias");
                 var runnerTypeText = runner.Attribute("type");
                 if (alias == null || runnerTypeText == null) continue;
-                java.lang.System.setProperty("concordion.runner.",
-                    runnerTypeText.Value);
+                Config.AddRunner(alias.Value, runnerTypeText.Value);
             }
         }
 
@@ -136,9 +132,10 @@ namespace Concordion.NET.Internal
             Config.ConcordionExtensions = new Dictionary<string, string>();
             foreach (var extensionDefinition in concordionExtensions.Elements("Extension"))
             {
-                var typeName = extensionDefinition.Attribute("type").Value;
-                var assemblyName = extensionDefinition.Attribute("assembly").Value;
-                Config.ConcordionExtensions.Add(typeName, assemblyName);
+                var typeName = extensionDefinition.Attribute("type");
+                var assemblyName = extensionDefinition.Attribute("assembly");
+                if (typeName == null || assemblyName == null) continue;
+                Config.ConcordionExtensions.Add(typeName.Value, assemblyName.Value);
             }
         }
 

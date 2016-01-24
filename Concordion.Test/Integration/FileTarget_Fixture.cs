@@ -1,4 +1,5 @@
-﻿using java.io;
+﻿using Concordion.NET.Internal.Util;
+using java.io;
 using NUnit.Framework;
 using org.concordion.api;
 using org.concordion.@internal;
@@ -13,7 +14,7 @@ namespace Concordion.Test.Integration
         {
             var resource = new Resource("\\blah\\blah.txt");
 
-            var target = new FileTarget(new File(@"c:\temp"));
+            var target = new FileTarget(new File(@"c:\temp"), new IOUtil());
 
             Assert.AreEqual(@"c:\temp\blah\blah.txt", target.resolvedPathFor(resource));
         }

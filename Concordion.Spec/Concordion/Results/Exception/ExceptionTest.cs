@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Concordion.NET.Integration;
+using Concordion.NET.Internal.Util;
 using Concordion.Spec.Support;
 using java.lang;
 using org.concordion.api;
@@ -33,7 +34,7 @@ namespace Concordion.Spec.Concordion.Results.Exception
                 .query("//p")
                 .get(0));
 
-            new ThrowableRenderer().throwableCaught(new ThrowableCaughtEvent(t, element, expression));
+            new ThrowableRenderer(new IOUtil()).throwableCaught(new ThrowableCaughtEvent(t, element, expression));
 
             return element.toXML();
         }

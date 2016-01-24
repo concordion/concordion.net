@@ -1,23 +1,16 @@
 ﻿using Concordion.Runners.NUnit;
-using Concordion.Spec.Support;
 using NUnit.Framework;
 
-namespace Concordion.Spec.Concordion.Integration
+namespace Concordion.Runners.Spec.Concordion.Integration
 {
     [TestFixture]
     public class NUnitRunnerTest : ExecutableSpecification
     {
-        public bool GreetingsProcessed(string fragment)
-        {
-            return new TestRig()
-                .WithFixture(this)
-                .ProcessFragment(fragment)
-                .IsSuccess;
-        }
+        private readonly Greeter _helloWorldGreeter = new Greeter();
 
         public string GetGreeting()
         {
-            return new Greeter().GetMessage();
+            return _helloWorldGreeter.GetMessage();
         }
     }
 

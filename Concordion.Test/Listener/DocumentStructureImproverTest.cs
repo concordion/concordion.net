@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using org.concordion.@internal.listener;
 using nu.xom;
+using Text = nu.xom.Text;
 
 namespace Concordion.Test.Listener
 {
@@ -44,9 +45,9 @@ namespace Concordion.Test.Listener
             html.appendChild(style2);
 
             var body = new Element("body");
-            body.insertChild("some ", 0);
+            body.insertChild(new Text("some "), 0);
             var bold = new Element("b");
-            bold.insertChild("bold text", 0);
+            bold.insertChild(new Text("bold text"), 0);
             body.appendChild(bold);
             html.appendChild(body);
             improver.beforeParsing(document);

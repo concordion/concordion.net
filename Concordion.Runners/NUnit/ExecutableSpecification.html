@@ -13,10 +13,11 @@
   and annotate it with the standard NUnit [TestFixture] 
   annotation.</p>
   <p>The HelloWorldTest fixture from the
-  <a href="http://concordion.org/dotnet/GettingStarted.html">Concordion.NET 
+  <a href="http://concordion.org/dotnet/GettingStarted.html" target="_top">Concordion.NET 
   tutorial</a> would need to be adapted as follows:</p>
 <pre class="code">
 <strong>using Concordion.Runners.NUnit;</strong>
+<strong>using NUnit.Framework;</strong>
 
 namespace Kickstart.Spec.HelloWorld
 {
@@ -31,7 +32,18 @@ namespace Kickstart.Spec.HelloWorld
         }
     } 
 }</pre>
-<p>Now you can <a href="http://concordion.org/dotnet/RunningTests.html">run your 
-Concordion.NET acceptance tests with the NUnit runner of your choice</a>.</p>
+
+<p>When you execute the following instrumentation
+<a href="http://concordion.org/dotnet/RunningTests.html" target="_top">with the NUnit runner of your choice</a>:</p>
+
+<pre class="html">&lt;html xmlns:concordion=&quot;http://www.concordion.org/2007/concordion&quot;&gt;
+    &lt;body&gt;
+        &lt;p concordion:assertEquals=&quot;GetGreeting()&quot;&gt;Hello World!&lt;/p&gt;
+    &lt;/body&gt; 
+&lt;/html&gt;
+</pre>
+
+<p>Your Concordion.NET tests are now run as a &quot;usual&quot; NUnit test.</p>
+
 </body>
 </html>

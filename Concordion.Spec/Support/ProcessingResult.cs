@@ -74,7 +74,11 @@ namespace Concordion.Spec.Support
 
         public string GetOutputFragmentXML()
         {
-            return this.GetOutputFragment().toXML().Replace("<fragment>", "").Replace("</fragment>", "").Replace("\u00A0", "&#160;");
+            return this.GetOutputFragment().toXML()
+                .Replace("<fragment>", String.Empty)
+                .Replace("</fragment>", String.Empty)
+                .Replace("\u00A0", "&#160;")
+                .Replace(" xmlns:concordion=\"http://www.concordion.org/2007/concordion\"", String.Empty);
         }
 
         public Document GetDocument()

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Concordion.NET.Internal;
 using org.concordion.api;
 
@@ -8,7 +6,7 @@ namespace Concordion.Spec.Support
 {
     public class StubEvaluator : Evaluator, EvaluatorFactory
     {
-        private object m_EvaluationResult = null;
+        private object m_EvaluationResult;
 
         public StubEvaluator(object fixture)
         {
@@ -23,8 +21,7 @@ namespace Concordion.Spec.Support
         public object evaluate(string expression) 
         {
             if (this.m_EvaluationResult is Exception) throw (Exception) this.m_EvaluationResult;
-
-            return SimpleEvaluator.ConvertToJavaTypes(this.m_EvaluationResult);
+            return BridgingEvaluator.ConvertToJavaTypes(this.m_EvaluationResult);
         }
 
         public object getVariable(string variableName)

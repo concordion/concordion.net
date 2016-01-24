@@ -1,4 +1,5 @@
-﻿using Concordion.NET.Integration;
+﻿using System;
+using Concordion.NET.Integration;
 using Concordion.Spec.Support;
 
 namespace Concordion.Spec.Concordion.Command.Echo
@@ -12,7 +13,10 @@ namespace Concordion.Spec.Concordion.Command.Echo
                 .WithStubbedEvaluationResult(null)
                 .ProcessFragment(fragment)
                 .GetOutputFragmentXML()
-                .Replace(" concordion:echo=\"username\">", ">");
+                .Replace(" concordion:echo=\"username\"", String.Empty)
+                .Replace(" ", String.Empty)
+                .Replace("\r", String.Empty)
+                .Replace("\n", String.Empty);
         }
     }
 }

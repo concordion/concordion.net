@@ -53,8 +53,7 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Concordion, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Concordion">
       <HintPath>..\packages\Concordion.1.5.1\lib\Concordion.dll</HintPath>
     </Reference>
     <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
@@ -73,29 +72,13 @@
       <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="xom, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Concordion.1.5.1\lib\xom.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -139,7 +122,7 @@
     <Compile Include="Concordion\Command\VerifyRows\VerifyRowsTest.cs" />
     <Compile Include="Concordion\Command\VerifyRows\VerifyRowsXHTMLNamespaceTest.cs" />
     <Compile Include="Concordion\ConcordionTest.cs" />
-    <Compile Include="Concordion\Configuration\BaseOutputDirectoryTesty.cs" />
+    <Compile Include="Concordion\Configuration\BaseOutputDirectoryTest.cs" />
     <Compile Include="Concordion\Configuration\BaseInputDirectoryTest.cs" />
     <Compile Include="Concordion\Configuration\SpecificationSuffixXhtmlTest.cs" />
     <Compile Include="Concordion\ExampleTest.cs" />
@@ -182,7 +165,6 @@
     <Compile Include="Concordion\Extension\Resource\ResourceExtensionTest.cs" />
     <Compile Include="Concordion\Integration\IntegrationTest.cs" />
     <Compile Include="Concordion\Integration\ConstructorTest.cs" />
-    <Compile Include="Concordion\Integration\NUnitRunnerTest.cs" />
     <Compile Include="Concordion\Integration\SetupMethodTest.cs" />
     <Compile Include="Concordion\Results\AssertEquals\Failure\AnchorsTest.cs" />
     <Compile Include="Concordion\Results\AssertEquals\Failure\EmptyFailureTest.cs" />
@@ -219,15 +201,10 @@
       <Project>{28a6b922-39b7-4703-abcc-103352537ef2}</Project>
       <Name>Concordion.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Concordion.Runners\Concordion.Runners.csproj">
-      <Project>{c57b6220-6ce6-4165-9144-214be62ce074}</Project>
-      <Name>Concordion.Runners</Name>
+    <ProjectReference Include="..\XOM.Adapter\XOM.Adapter.csproj">
+      <Project>{7e03e1c4-da4d-4216-9a86-11e49e648dd3}</Project>
+      <Name>XOM.Adapter</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="concordion.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

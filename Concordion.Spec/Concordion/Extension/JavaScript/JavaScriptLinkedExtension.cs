@@ -2,7 +2,7 @@ using org.concordion.api.extension;
 
 namespace Concordion.Spec.Concordion.Extension.JavaScript
 {
-    class JavaScriptLinkedExtension : ConcordionExtension
+    public class JavaScriptLinkedExtension : ConcordionExtension
     {
         public void addTo(ConcordionExtender concordionExtender)
         {

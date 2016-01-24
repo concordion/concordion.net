@@ -39,7 +39,7 @@ namespace Concordion.Test.Listener
             var meta = new Element("meta");
             meta.addAttribute(new Attribute("http-equiv", "Content-Type"));
             meta.addAttribute(new Attribute("content", "text/html; charset=UTF-8"));
-            head.appendChild(new Element(meta));
+            head.appendChild(meta);
             Assert.AreEqual(
                 "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /></head></html>",
                 new HtmlUtil().RemoveWhitespaceBetweenTags(html.toXML()));

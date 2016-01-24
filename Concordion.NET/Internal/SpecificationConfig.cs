@@ -62,17 +62,6 @@ namespace Concordion.NET.Internal
         #region Methods
 
         /// <summary>
-        /// Loads the specified type.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns></returns>
-        public SpecificationConfig Load(Type type)
-        {
-            Load(type.Assembly);
-            return this;
-        }
-
-        /// <summary>
         /// Loads the specified assembly.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
@@ -102,6 +91,12 @@ namespace Concordion.NET.Internal
             }
 
             return this;
+        }
+
+        public void AddRunner(string name, string assemblyQualifiedTypeName)
+        {
+            const string runnerNamespace = "concordion.runner.";
+            java.lang.System.setProperty(runnerNamespace + name, assemblyQualifiedTypeName);
         }
 
         #endregion

@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordion.Runners", "Conco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordion.Test", "Concordion.Test\Concordion.Test.csproj", "{1FB3D6CF-AE3E-4EF6-9AA7-324AE600A932}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordion.Runners.Spec", "Concordion.Runners.Spec\Concordion.Runners.Spec.csproj", "{B8F4EC35-D56A-4EFD-8235-E0A03468DED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XOM.Adapter", "XOM.Adapter\XOM.Adapter.csproj", "{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{1FB3D6CF-AE3E-4EF6-9AA7-324AE600A932}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FB3D6CF-AE3E-4EF6-9AA7-324AE600A932}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FB3D6CF-AE3E-4EF6-9AA7-324AE600A932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8F4EC35-D56A-4EFD-8235-E0A03468DED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F4EC35-D56A-4EFD-8235-E0A03468DED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F4EC35-D56A-4EFD-8235-E0A03468DED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F4EC35-D56A-4EFD-8235-E0A03468DED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

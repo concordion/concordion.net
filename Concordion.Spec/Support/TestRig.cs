@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Concordion.NET.Internal;
 using Concordion.NET.Internal.Extension;
+using Concordion.NET.Internal.Util;
 using org.concordion.api;
 using org.concordion.api.extension;
 using org.concordion.@internal;
-using SimpleEvaluatorFactory = Concordion.NET.Internal.SimpleEvaluatorFactory;
 
 namespace Concordion.Spec.Support
 {
@@ -42,7 +42,7 @@ namespace Concordion.Spec.Support
 
         public TestRig()
         {
-            this.EvaluatorFactory = new SimpleEvaluatorFactory();
+            this.EvaluatorFactory = new BridgingEvaluatorFactory();
             this.Source = new StubSource();
             this.Configuration = new SpecificationConfig();
         }
@@ -60,6 +60,7 @@ namespace Concordion.Spec.Support
 
             var concordionBuilder = new ConcordionBuilder()
                 .withEvaluatorFactory(this.EvaluatorFactory)
+                .withIOUtil(new IOUtil())
                 .withSource(this.Source)
                 .withTarget(this.Target)
                 .withAssertEqualsListener(eventRecorder)
@@ -77,16 +78,9 @@ namespace Concordion.Spec.Support
 
             var concordion = concordionBuilder.build();
 
-            try
-            {
-                ResultSummary resultSummary = concordion.process(resource, this.Fixture);
-                string xml = this.Target.GetWrittenString(resource);
-                return new ProcessingResult(resultSummary, eventRecorder, xml);
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Test rig failed to process specification", e);
-            }
+            ResultSummary resultSummary = concordion.process(resource, this.Fixture);
+            string xml = this.Target.GetWrittenString(resource);
+            return new ProcessingResult(resultSummary, eventRecorder, xml);
         }
 
         public ProcessingResult Process(string html)

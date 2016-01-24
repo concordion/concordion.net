@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.IO;
 using java.io;
 using org.concordion.api;
 using ikvm.io;
@@ -45,23 +44,23 @@ namespace Concordion.NET.Internal
 
         #region Source Members
 
-        public bool canFind(org.concordion.api.Resource resource)
+        public bool canFind(Resource resource)
         {
-            var fullyQualifiedTypeName = ConvertPathToNamespace(resource.getPath());
-            return FixtureAssembly.GetManifestResourceInfo(fullyQualifiedTypeName) != null;
+            var fullyQualifiedTypeName = this.ConvertPathToNamespace(resource.getPath());
+            return this.FixtureAssembly.GetManifestResourceInfo(fullyQualifiedTypeName) != null;
         }
 
-        public InputStream createInputStream(org.concordion.api.Resource resource)
+        public InputStream createInputStream(Resource resource)
         {
-            var fullyQualifiedTypeName = ConvertPathToNamespace(resource.getPath());
+            var fullyQualifiedTypeName = this.ConvertPathToNamespace(resource.getPath());
 
             if (canFind(resource))
             {
-                Stream manifestResourceStream = FixtureAssembly.GetManifestResourceStream(fullyQualifiedTypeName);
+                var manifestResourceStream = this.FixtureAssembly.GetManifestResourceStream(fullyQualifiedTypeName);
                 return new InputStreamWrapper(manifestResourceStream);
             }
 
-            throw new InvalidOperationException(String.Format("Cannot open the resource {0}", fullyQualifiedTypeName));
+            throw new InvalidOperationException(string.Format("Cannot open the resource {0}", fullyQualifiedTypeName));
         }
 
         #endregion

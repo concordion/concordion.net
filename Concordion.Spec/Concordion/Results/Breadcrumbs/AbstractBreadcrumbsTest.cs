@@ -1,4 +1,5 @@
-﻿using org.concordion.api;
+﻿using System;
+using org.concordion.api;
 using Concordion.Spec.Support;
 
 namespace Concordion.Spec.Concordion.Results.Breadcrumbs
@@ -24,7 +25,9 @@ namespace Concordion.Spec.Concordion.Results.Breadcrumbs
             {
                 if ("breadcrumbs" == span.getAttributeValue("class")) 
                 {
-                    result.html = span.toXML();
+                    result.html = span.toXML()
+                        .Replace("\r\n", String.Empty)
+                        .Replace(">  <", "><");
                     result.text = span.getText();
                 }
             }
