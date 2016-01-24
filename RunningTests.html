@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:concordion="http://www.concordion.org/2007/concordion" lang="en-US">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<meta http-equiv="Content-Language" content="en-US" />
+    <title>Automated Acceptance Testing|Concordion.NET</title>
+	<meta name="description" content="Run automated Concordion.NET tests with NUnit." />
+    <meta name="keywords" content="automated testing, automated acceptance tests, .NET, C#" />
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <link href="image/favicon.ico" rel="icon" type="image/vnd.microsoft.icon" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+	    <div class="right-hand-side">
+		  <div class="translation-links">
+		    <a data-lang="Chinese (Simplified)"><img alt="Chinese" title="Chinese" src="image/flag/chinese.png"/></a>
+			<a data-lang="French"><img alt="French" title="French" src="image/flag/french.png"/></a>
+			<a data-lang="German"><img alt="German" title="German" src="image/flag/german.png"/></a>
+			<a data-lang="Polish"><img alt="Polish" title="Polish" src="image/flag/polish.png"/></a>
+			<a data-lang="Portuguese"><img alt="Portuguese" title="Portuguese" src="image/flag/portuguese.png"/></a>
+			<a data-lang="Russian"><img alt="Russian" title="Russian" src="image/flag/russian.png"/></a>
+			<a data-lang="Spanish"><img alt="Spanish" title="Spanish" src="image/flag/spanish.png"/></a>
+		  </div>
+	      <div id="google_translate_element" style="display:none;"></div>
+		  <div class="right-hand-side">
+		    <p>Stay in touch</p>
+			<a href="http://concordion.org/facebook.html"><img alt="Concordion on Facebook" src="image/social/facebook.png" /></a>
+			<a href="http://concordion.org/googleplus.html"><img alt="Concordion on Google+" src="image/social/google-plus.png" /></a>
+			<a href="http://concordion.org/linkedin.html"><img alt="Concordion on LinkedIn" src="image/social/linkedin.png" /></a>
+			<a href="http://concordion.org/pinterest.html"><img alt="Concordion on Pinterest" src="image/social/pinterest.png" /></a>
+			<a href="http://concordion.org/twitter.html"><img alt="Concordion on Twitter" src="image/social/twitter.png" /></a>
+	      </div>
+		</div>
+	    <div class="logo"><a href="index.html"> <img src="image/front-page-banner.png" alt="BDD in plain English" /> </a></div>
+      </div>
+	  <!-- header -->
+      
+      <div class="menuBar">
+        <ul class="menu">
+          <li><a href="index.html">Home</a></li>
+		  <li><a href="Example.html">Example</a></li>
+          <li><a href="GettingStarted.html">Getting Started</a></li>
+          <li class="selectedTab"><a href="RunningTests.html">Running Tests</a></li>
+		  <li><a href="Specification.html">Specification</a></li>
+          <li><a href="Extensions.html">Extensions</a></li>
+          <li><a href="Configuration.html">Configuration</a></li>
+          <li><a href="Download.html">Download</a></li>
+        </ul>
+      </div> <!-- menuBar  -->
+      
+      <div class="content">
+        <h1>Run Concordion.NET Acceptance Tests with NUnit</h1>
+        <p>Concordion.NET integrates with one of the
+          most popular automated testing frameworks. Concordion.NET provides an NUnit Addin 
+		that allows you to run <a href="index.html">acceptance tests</a> with any NUnit environment that supports NUnit Addins 
+		(NUnit version 2.6.4). 
+		We describe how to run Concordion.NET tests with </p>
+		  <ul>
+			  <li><a href="#stand-alone">stand alone</a> NUnit test 
+		runners, as well as </li>
+			  <li>NUnit test runners <a href="#visual-studio">within Visual Studio</a>.<ul>
+				  <li><a href="#testdriven.net">TestDriven.NET</a></li>
+				  <li><a href="#test-adapter">NUnit Test Adapter</a></li>
+				  <li><a href="#resharper">ReSharper</a></li>
+			  </ul>
+			  </li>
+		  </ul>
+		  <h2>Automated testing with Concordion.NET setup</h2>
+		  <p>Similar to the kickstart project described in the
+		  <a href="GettingStarted.html">Getting Started</a> section, you need to 
+		  setup your Spec project for automated testing in Visual Studio as follows:</p>
+        <ol>
+          <li><a href="Download.html">Download
+              Concordion.NET</a></li>
+            <li>Make sure that the following DLLs are
+			referenced
+              in your project. You find the Concordion.dll and the necessary 
+			OGNL.dll in the lib directory of the package you have downloaded in 
+			step 1. The nunit.framework.dll is part of the NUnit installation of 
+			your choice (see sections below). </li>
+            <ul>
+				<li><span style="font-weight: bold;">concordion.dll</span></li>
+				<li><span style="font-weight: bold;">nunit.framework.dll</span></li>
+				<li><span style="font-weight: bold;">OGNL.dll</span></li>
+			</ul>
+			<li>Add the attribute [assembly: RequiredAddin("ConcordionNUnitAddin")] to the AssemblyInfo.cs 
+			of your project. This tells NUnit that the
+			<a class="externalLink" href="http://www.nunit.org/index.php?p=nunitAddins&r=2.6.4">Concordion-NUnit-Addin
+              is required</a> to run your Concordion.NET tests.</li>
+			<li>Make sure that you use .NET framework 4.0 or higher as target framework version in your Spec project that
+            contains your Concordion.NET fixture classes.</li>
+			<li>Make sure that all your executable specification documents have the property 
+		  &quot;Build Action&quot; set to &quot;Embedded Resource&quot; in your Visual Studio 
+		  project.<ul>
+				<li>Or use the <a href="Configuration.html#input-directory">
+				BaseInputDirectory configuration</a> to specify the location of 
+				your specification documents.</li>
+			</ul>
+			</li>
+			<li>Build your project for
+			<a class="externalLink" href="http://living-in-concordion.blogspot.co.at/2009/05/your-first-concordionnet-project-part-3.html">automated acceptance testing</a>.</li>
+        </ol>
+		  <h2 id="stand-alone">Using the standalone NUnit test runner for 
+		  automated acceptance testing</h2>
+		  <p><a class="externalLink" href="http://nunit.org/index.php?p=runningTests&r=2.6.4">
+		  NUnit provides different runners</a>, which can be used to run your 
+		  Concordion.NET tests.</p>
+		  <h3>Run Concordion.NET tests with the NUnit GUI runner</h3>
+        <ol>
+          <li><a href="Download.html">Download
+              Concordion.NET</a>.</li>
+          <li>Download and <a class="externalLink" href="http://www.nunit.org/index.php?p=installation&r=2.6.4">install NUnit version 2.6.4</a>.</li>
+			<li>Copy the Concordion.NUnit.dll from the tools directory of your 
+			Concordion.NET package into the addin directory of 
+		  your NUnit installation
+            (&lt;NUnit-installation-path&gt;\bin\addins). <br/>
+			Please, make sure to use the latest version of this DLL, when
+            you update Concordion.NET.</li>
+			<li>Load your tests with the NUnit GUI runner.<br/>
+			Tip: You can open 
+			your Visual Studio solutions and/or projects in NUnit, when you 
+			activate the
+			<a class="externalLink" href="http://nunit.org/index.php?p=settingsDialog&r=2.6.4">
+			IDE Support Settings - Visual Studio</a>.</li>
+          <li>Select the Concordion.NET test you want to run in the tree view 
+		  and press the Run button.</li>
+        </ol>
+        <p>You will see the typical green bar, when your tests pass. :-)</p>
+        <p> <img alt="TestResult" src="image/NunitResult.jpg" /> </p>
+        <p>You can find the resulting report pages in the output directory that can be specified in 
+		<a href="Configuration.html">configuration
+            files</a> of Concordion.NET. By default Concordion.NET places them into the temp directory (on Windows defined by the
+          environment variable %Temp%, which by default points to
+          C:\Users\&lt;your-windows-user&gt;\AppData\Local\Temp).</p>
+		  <h3>Run Concordion.NET tests with the console runner</h3>
+		  <p>NUnit provides a
+		  <a class="externalLink" href="http://nunit.org/index.php?p=nunit-console&r=2.6.4">
+		  command line client</a> for test execution, which can be useful for 
+		  the automation of test execution and integration into other systems 
+		  (e.g. build systems). You can run your Concordion.NET tests with the 
+		  NUnit console runner as follows:</p>
+        <ol>
+          <li><a href="Download.html">Download
+              Concordion.NET</a>.</li>
+			<li>Download and <a class="externalLink" href="http://www.nunit.org/index.php?p=installation&r=2.6.4">install NUnit version 2.6.4</a>.</li>
+            <li>Copy the Concordion.NUnit.dll from the tools directory of your 
+			Concordion.NET package into the addin directory of 
+		  your NUnit installation
+            (&lt;NUnit-installation-path&gt;\bin\addins). <br/>
+			Please, make sure to use the latest version of this DLL, when
+            you update Concordion.NET.</li>
+			<li>In the command line window,
+			<a class="externalLink" href="http://nunit.org/index.php?p=nunit-console&r=2.6.4">run 
+			the nunit-console application</a> and pass in the DLL containing your 
+			Concordion.NET specifications and tests.</li>
+        </ol>
+		  <h3>Debugging Concordion.NET tests</h3>
+        <p>If you want to debug your Concordion.NET tests, you can do this in the same way as <a class="externalLink" href="http://erraticdev.blogspot.co.at/2012/01/running-or-debugging-nunit-tests-from.html">debugging
+            NUnit tests</a></p>
+		  <h2 id="visual-studio">Using NUnit test runners integrated in Visual Studio</h2>
+		  <p>There are several ways to run Concordion.NET automated tests within 
+		  Visual Studio (e.g. TestDriven.NET, ReSharper, Test Adapter,  
+		  etc.). Please, find here a summary on how to run Concordion.NET tests right in 
+		  Visual Studio.</p>
+		  <h3 id="testdriven.net">TestDriven.NET</h3>
+		  <p>
+		  You can use <a class="externalLink" href="http://testdriven.net">TestDriven.NET</a> 
+		  to execute Concordion.NET tests within Visual Studio.</p>
+		  <ol>
+			  <li><a href="Download.html">Download
+              Concordion.NET</a>.</li>
+			  <li>Install TestDriven.NET</li>
+			  <li>Copy Concordion.NUnit.dll from the tools directory of your 
+			  Concordion.NET package into the addin directory of the latest 
+			  NUnit version in the installation directory of TestDriven.NET (&lt;testdriven.net-installation-path&gt;\NUnit\2.6\addins)</li>
+			  <li>To run a test, 
+		  please use the &quot;Run Test(s)&quot; command of TestDriven.NET on your 
+		  Concordion.NET fixture class (<a href="http://testdriven.net/quickstart.aspx">http://testdriven.net/quickstart.aspx</a>).</li>
+		  </ol>
+		  <p>When you run Concordion.NET tests with TestDriven.NET in Visual 
+		  Studio, you should see an output similar to:</p>
+		  <pre class="console">------ Test started: Assembly: Kickstart.Spec.dll ------ <br/>
+		  Processed specifications : C:\concordion-test\Kickstart\Spec\HelloWorld\HelloWorld.html<br/>
+		  1 passed, 0 failed, 0 skipped, took 0,67 seconds (NUnit 2.6.2).</pre>
+		  <h3 id="test-adapter">NUnit Test Adapter</h3>
+		  <p>Since version 2012, Visual Studio supports <a class="externalLink" href="http://blogs.msdn.com/b/visualstudioalm/archive/2012/03/08/what-s-new-in-visual-studio-11-beta-unit-testing.aspx">
+		  3rd party test runners</a> to execute their tests right inside Visual 
+		  Studio. This would allow using the NUnit Test Adapter for Visual 
+		  Studio to run Concordion.NET tests.</p>
+		  <p>Please note that at the time of writing an <a class="externalLink" href="https://github.com/nunit/nunit-vs-adapter/issues/9">issue of the NUnit Test 
+		  Adapter</a> prevents the execution of Concordion.NET tests based on the 
+		  NUnit addin. Until the issue is fixed by the NUnit team, you can use 
+		  Test Runner described below as a work around to run your Concoridon.NET tests with 
+		  the NUnit Test Adapter.</p>
+		  <p>When you want to use the Test Runner, make sure to remove the 
+		  [assembly: RequiredAddin("ConcordionNUnitAddin&quot;)] from the projects AssemblyInfo.cs. 
+		  Otherwise the issue in the NUnit Test Adapter prevents your 
+		  Concordion.NET tests being found by the NUnit Test Adapter.</p>
+		  <iframe src="Concordion/Integration/NUnitRunner.html" onload="setIframeHeight(this.id)" name="testrunner" id="testrunner" width="100%" height="630" border="0" frameborder="0"></iframe>
+		  <iframe src="Concordion/Integration/ReSharper.html" onload="setIframeHeight(this.id)" name="resharper" id="resharper" width="100%" height="750" border="0" frameborder="0"></iframe>
+      </div>
+      <!-- content -->
+	  
+	</div>
+    <!-- page -->
+	
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-58172036-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+	
+	<script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.FloatPosition.TOP_LEFT, gaTrack: true, gaId: 'UA-58172036-1'}, 'google_translate_element');
+      }
+    </script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+	<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+
+    <script type="text/javascript">
+    function triggerHtmlEvent(element, eventName)
+    {
+        var event;
+        if(document.createEvent) {
+            event = document.createEvent('HTMLEvents');
+            event.initEvent(eventName, true, true);
+            element.dispatchEvent(event);
+        }
+        else {
+        event = document.createEventObject();
+            event.eventType = eventName;
+            element.fireEvent('on' + event.eventType, event);
+        }
+    }
+
+    <!-- Flag click handler -->
+    var jq = $.noConflict();
+    jq('.translation-links a').click(function(e)
+    {
+        e.preventDefault();
+        var lang = jq(this).data('lang');
+        jq('#google_translate_element select option').each(function(){
+        if(jq(this).text().indexOf(lang) > -1) {
+            jq(this).parent().val(jq(this).val());
+            var container = document.getElementById('google_translate_element');
+            var select = container.getElementsByTagName('select')[0];
+            triggerHtmlEvent(select, 'change');
+        }
+        });
+    });
+    </script>
+	
+  </body>
+</html>

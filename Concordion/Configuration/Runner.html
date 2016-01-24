@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:concordion="http://www.concordion.org/2007/concordion">
+<link href="../../concordion.css" rel="stylesheet" type="text/css" />
+<body>
+
+    <h3>Runners</h3>
+	<p>Runners are used to call and run one specification from another
+          specification. Another specification may be even in a different testing
+          suite (like FIT, FitNesse, Cucumber, etc.) </p>
+        <h4>Runner</h4>
+        <p>Each <code>Runner</code> element has two attributes that must be present to be
+          recognized properly. They are "alias" and "type". The alias is the 
+		name of the runner used in the concordion:run statement. The type is
+          the Assembly-Qualified Name of the type that you will associate with
+          the alias and will be used to run the called specification. See the
+          specification for Run for more details.</p>
+        <p>To <span concordion:assertTrue="IsReportLocatedIn(#directoryPath)">
+		use the test runner class <code>Concordion.Spec.Concordion.Command.Run.RunTestRunner</code> 
+		with the name <code>runtestrunner</code> in your specification</span>, 
+		you can use the following configuration:</p>
+        <pre class="html">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
+&lt;Concordion&gt;
+  &lt;Runners&gt;
+    &lt;Runner
+    	alias=&quot;runtestrunner&quot;
+    	type=&quot;<span concordion:set="#directoryPath">
+		Concordion.Spec.Concordion.Command.Run.RunTestRunner,
+  		Concordion.Spec, Version=1.0.0.0,
+  		Culture=neutral,
+ 	 	PublicKeyToken=null&quot; /&gt;
+  &lt;/Runners&gt;
+&lt;/Concordion&gt;</pre>
+    </div>
+    </body>
+</html>
