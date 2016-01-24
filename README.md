@@ -44,7 +44,7 @@ History prior to February 2013 can be found in the [Google Code repository](http
 
 ## License
 
-Copyright 2010-2015 concordion.org
+Copyright 2010-2016 concordion.org
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use these files except in compliance with the License.
