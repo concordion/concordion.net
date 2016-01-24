@@ -2,7 +2,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>AssertEquals</title>
+<title>ExecutableSpecification</title>
 <link media="all" rel="stylesheet" type="text/css" href="../../concordion.css"/>
 </head>
 
@@ -17,6 +17,7 @@
   tutorial</a> would need to be adapted as follows:</p>
 <pre class="code">
 <strong>using Concordion.Runners.NUnit;</strong>
+<strong>using NUnit.Framework;</strong>
 
 namespace Kickstart.Spec.HelloWorld
 {
@@ -35,14 +36,14 @@ namespace Kickstart.Spec.HelloWorld
 <p>When you execute the following instrumentation
 <a href="http://concordion.org/dotnet/RunningTests.html" target="_top">with the NUnit runner of your choice</a>:</p>
 
-<pre class="html">&lt;html <b>xmlns:concordion=&quot;http://www.concordion.org/2007/concordion&quot;</b>&gt;
+<pre class="html">&lt;html xmlns:concordion=&quot;http://www.concordion.org/2007/concordion&quot;&gt;
     &lt;body&gt;
-        <span concordion:set="#snippet">&lt;p <b>concordion:assertEquals=&quot;GetGreeting()&quot;</b>&gt;Hello World!&lt;/p&gt;</span>
+        &lt;p concordion:assertEquals=&quot;GetGreeting()&quot;&gt;<span concordion:assertEquals="GetGreeting()">Hello World!</span>&lt;/p&gt;
     &lt;/body&gt; 
 &lt;/html&gt;
 </pre>
 
-<p>Your <span concordion:assertTrue="GreetingsProcessed(#snippet)">Concordion.NET tests are now run as a &quot;usual&quot; NUnit test</span>.</p>
+<p>Your Concordion.NET tests are now run as a &quot;usual&quot; NUnit test.</p>
 
 </body>
 </html>
