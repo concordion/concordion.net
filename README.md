@@ -1,4 +1,4 @@
-[![GitHub Version](https://img.shields.io/github/release/concordion/concordion-net.svg)](https://github.com/concordion/concordion-net/releases/latest)
+[![GitHub Version](https://img.shields.io/github/release/concordion/concordion.net.svg)](https://github.com/concordion/concordion.net/releases/latest)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Concordion.NET.svg)](https://www.nuget.org/packages/Concordion.NET/)
 [![Apache License 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
@@ -14,7 +14,7 @@ To get started, check out <http://www.concordion.org/dotnet/>
 
 ## Quick start
 
-- [Download the latest release](https://github.com/concordion/concordion-net/releases/)
+- [Download the latest release](https://github.com/concordion/concordion.net/releases/)
 - [Read the tutorial](http://www.concordion.org/dotnet/GettingStarted.html)
 - [Use your own active specifications](http://www.concordion.org/dotnet/RunningTests.html) :-)
 
@@ -27,7 +27,7 @@ To get started, check out <http://www.concordion.org/dotnet/>
 
 ## Bugs and feature requests
 
-Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/concordion/concordion-net/issues/new).
+Have a bug or a feature request? Please first search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/concordion/concordion.net/issues/new).
 
 ## Contributing
 
@@ -35,11 +35,12 @@ Have a bug or a feature request? Please first search for existing and closed iss
 2. Create a branch (`git checkout -b my_contribution`)
 3. Commit your changes (`git commit -am "Added cool stuff"`)
 4. Push to the branch (`git push origin my_contribution`)
-5. Open a [Pull Request](https://github.com/concordion/concordion-net/pulls)
+5. Open a [Pull Request](https://github.com/concordion/concordion.net/pulls)
 6. Enjoy a refreshing Diet Coke and wait
 
 ## Project History
 
+History prior to January 2016 can be found in the [V1 repository](https://github.com/concordion/concordion-net)
 History prior to February 2013 can be found in the [Google Code repository](https://code.google.com/p/concordion-net/).
 
 ## License
