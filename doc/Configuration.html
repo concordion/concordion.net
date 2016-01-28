@@ -50,13 +50,11 @@
       
       <div class="content">
         <h1>Configuring Concordion.NET</h1>
-        <p>Concordion.NET uses two types of
-          configuration files to define basic parameters for the execution of
+        <p>Concordion.NET provides several configuration options for the execution of
           automated acceptance tests.</p>
 
-        <h2>1. Project specific configuration</h2>
-        <p>The first configuration file is specific for each project containing
-          Concordion.NET specifications and/or fixtures. This configuration file has the
+        <p>With Concordion.NET 1.5.0 there is just one type of configuration 
+		files used. This configuration file is specific for each project containing Concordion.NET specifications and/or fixtures. This configuration file has the
           same name as the DLL file, but the file extension ".dll" is
           replaced by ".config". The &lt;spec&gt;.config file has to be located in the same
           directory as your &lt;spec&gt;.dll to be loaded by Concordion.NET.</p>
@@ -64,36 +62,9 @@
         <iframe src="Concordion/Configuration/BaseInputDirectory.html" onload="setIframeHeight(this.id)" name="input-directory" id="input-directory" width="100%" height="450" border="0" frameborder="0"></iframe>
         <iframe src="Concordion/Configuration/BaseOutputDirectory.html" onload="setIframeHeight(this.id)" name="output-directory" id="output-directory" width="100%" height="250" border="0" frameborder="0"></iframe>
         <iframe src="Concordion/Configuration/SpecificationSuffix.html" onload="setIframeHeight(this.id)" name="suffix" id="suffix" width="100%" height="350" border="0" frameborder="0"></iframe>
+        <iframe src="Concordion/Configuration/Runner.html" onload="setIframeHeight(this.id)" name="runner" id="runner" width="100%" height="550" border="0" frameborder="0"></iframe>
         
-        <h2>2. Concordion.config</h2>
-        This second configuration file contains setting for the test runners to
-        be used. The default test runner of Concordion.NET is the RunTestRunner.
-        An example configuration is shown below. The
-        config file has to be located in the same directory as the
-        Concordion.dll in order to be found by the Concordion.NET framework.<br/>
-        <h3>Runners</h3>
-        <p>Runners are used to call and run one specification from another
-          specification. Another specification may be in a different testing
-          suite (like FIT, FitNesse, Cucumber, etc.) </p>
-        <h4>Runner</h4>
-        <p>Each runner element has two attributes that must be present to be
-          recognized properly. They are "alias" and "type". The alias is the 
-		name of the runner used in the concordion:run statement. The type is
-          the Assembly-Qualified Name of the type that you will associate with
-          the alias and will be used to run the called specification. See the
-          specification for Run for more details. </p>
-        <br/>
-        <pre class="html">&lt;?xml version="1.0" encoding="utf-8" ?&gt;
-&lt;Concordion&gt;
-  &lt;Runners&gt;
-    &lt;Runner
-    	alias="runtestrunner"
-    	type="Concordion.Spec.Concordion.Command.Run.RunTestRunner,
-  		Concordion.Spec, Version=1.0.0.0,
-  		Culture=neutral,
- 	 	PublicKeyToken=null" /&gt;
-  &lt;/Runners&gt;
-&lt;/Concordion&gt;</pre>
+        
       </div>
       <!-- content -->
 	  
