@@ -10,6 +10,11 @@
     <meta name="keywords" content="automated testing, automated acceptance tests, .NET, C#" />
     <link href="css/default.css" rel="stylesheet" type="text/css" />
     <link href="image/favicon.ico" rel="icon" type="image/vnd.microsoft.icon" />
+    <style type="text/css">
+	.auto-style1 {
+		font-weight: bold;
+	}
+	</style>
   </head>
   <body>
     <div class="page">
@@ -82,15 +87,18 @@
 			step 1. The nunit.framework.dll is part of the NUnit installation of 
 			your choice (see sections below). </li>
             <ul>
-				<li><span style="font-weight: bold;">concordion.dll</span></li>
+				<li>C<span style="font-weight: bold;">oncordion.dll</span></li>
+				<li class="auto-style1">Concordion.NET.dll</li>
+				<li class="auto-style1">IKVM.*.dll</li>
 				<li><span style="font-weight: bold;">nunit.framework.dll</span></li>
 				<li><span style="font-weight: bold;">OGNL.dll</span></li>
+				<li class="auto-style1">xom.dll</li>
 			</ul>
 			<li>Add the attribute [assembly: RequiredAddin("ConcordionNUnitAddin")] to the AssemblyInfo.cs 
 			of your project. This tells NUnit that the
 			<a class="externalLink" href="http://www.nunit.org/index.php?p=nunitAddins&r=2.6.4">Concordion-NUnit-Addin
               is required</a> to run your Concordion.NET tests.</li>
-			<li>Make sure that you use .NET framework 4.0 or higher as target framework version in your Spec project that
+			<li>Make sure that you use .NET framework 3.5 or higher as target framework version in your Spec project that
             contains your Concordion.NET fixture classes.</li>
 			<li>Make sure that all your executable specification documents have the property 
 		  &quot;Build Action&quot; set to &quot;Embedded Resource&quot; in your Visual Studio 
@@ -182,9 +190,10 @@
 		  </ol>
 		  <p>When you run Concordion.NET tests with TestDriven.NET in Visual 
 		  Studio, you should see an output similar to:</p>
-		  <pre class="console">------ Test started: Assembly: Kickstart.Spec.dll ------ <br/>
-		  Processed specifications : C:\concordion-test\Kickstart\Spec\HelloWorld\HelloWorld.html<br/>
-		  1 passed, 0 failed, 0 skipped, took 0,67 seconds (NUnit 2.6.2).</pre>
+		  <pre class="console">
+------ Test started: Assembly: Kickstart.Spec.dll ------ <br/>
+Processed specifications : C:\concordion-test\Kickstart\Spec\HelloWorld\HelloWorld.html<br/>
+1 passed, 0 failed, 0 skipped, took 0,82 seconds (NUnit 2.6.4).</pre>
 		  <h3 id="test-adapter">NUnit Test Adapter</h3>
 		  <p>Since version 2012, Visual Studio supports <a class="externalLink" href="http://blogs.msdn.com/b/visualstudioalm/archive/2012/03/08/what-s-new-in-visual-studio-11-beta-unit-testing.aspx">
 		  3rd party test runners</a> to execute their tests right inside Visual 

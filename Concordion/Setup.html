@@ -20,13 +20,13 @@
           <li>"Greeter.cs" is the class we want to test</li>
           <li>"Kickstart.Spec" is a Visual Studio project for the specifications
             and acceptance tests. Unit tests are typically held in a project
-            ending with "Test" but we prefer the name "Spec", for the Concordion
+            ending with "Test" but we prefer the name "Spec", for the Concordion.NET
             acceptance tests, to emphasize the fact that these tests are
             concerned with <span style="font-style: italic;">external behavior</span>.
           </li>
-          <li>"HelloWorldTest.cs" is a Concordion test fixture class. We'll
+          <li>"HelloWorldTest.cs" is a Concordion.NET test fixture class. We'll
             explain how this works, below.</li>
-          <li>"HelloWorld.html" is the Concordion specification and is processed
+          <li>"HelloWorld.html" is the Concordion.NET specification and is processed
             by the <code>"HelloWorldTest.cs"</code> fixture. The name of the
             fixture and the HTML file share the same base name. The fixture has
             an optional suffix of "Test" - for example, it may be named
@@ -34,11 +34,14 @@
           <li>"concordion.css" is a stylesheet to make the specs look nice while
             you're writing them.</li>
         </ol>
-        <p>Concordion.NET requires the .NET framework with version 4.0 or
+        <p>Concordion.NET requires the .NET framework with version 3.5 or
           higher. You have to add the following references to your project: </p>
         <ul>
           <li>Concordion.dll</li>
+			<li>Concordion.NET.dll</li>
+			<li>IKVM.*.dll</li>
           <li>OGNL.dll</li>
+			<li>xom.dll</li>
           <li>nunit.framework.dll (version 2.6.4)</li>
         </ul>
         <p>To be able to 
@@ -51,15 +54,15 @@
         <p>These dependencies are included in the distribution.</p>
         <h2>The Basics</h2>
         <hr>
-        <p>A Concordion active specification consists of two parts: </p>
+        <p>A Concordion.NET executable specification consists of two parts: </p>
         <ol>
           <li>a well-formed XHTML document describing the functionality, and </li>
-          <li>fixture code written in C#&nbsp; that finds concrete examples in
-            the document and uses them to verify the system under test.</li>
+          <li>fixture code written in C#&nbsp; that relies on concrete examples 
+		  from the specification document and uses them to verify the system under test.</li>
         </ol>
         <p> Both files must be in the same package. In order for the magic to
           happen, the document must first be <em>instrumented</em> with
-          commands. Concordion commands are specified as attributes on elements
+          commands. Concordion.NET commands are specified as attributes on elements
           in the XHTML document. Web browsers ignore attributes that they don't
           understand, so these commands are effectively invisible. </p>
         <p> The commands use a <code>"concordion"</code> namespace defined at
