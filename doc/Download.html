@@ -55,7 +55,7 @@
           <tr>
             <td>
 			<img src="image/download.gif" alt="Download Concordion.NET" height="50" width="50" /></td>
-            <td><b><a href="https://github.com/concordion/concordion.net/releases/download/v1.5.0-beta/Concordion.NET-1.5.0-beta.zip" id="download-link">Concordion.NET-1.5.0-beta.zip</a></b></td>
+            <td><b><a href="https://github.com/concordion/concordion.net/releases/download/v1.5.0-beta/Concordion.NET-1.5.0-beta.zip" id="download-link-beta">Concordion.NET-1.5.0-beta.zip</a></b></td>
           </tr>
 		  <tr>
             <td>
@@ -223,6 +223,10 @@
       var downloadLink = document.getElementById('download-link');
       addListener(downloadLink, 'click', function() {
         ga('send', 'event', 'download', 'Concordion.NET', 'zip-file');
+      });
+	  var downloadLink = document.getElementById('download-link-beta');
+      addListener(downloadLink, 'click', function() {
+        ga('send', 'event', 'download', 'Concordion.NET', 'zip-file-beta');
       });
       var nugetLink = document.getElementById('nuget-package');
       addListener(nugetLink, 'click', function() {
