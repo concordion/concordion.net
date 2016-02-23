@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Concordion">
-      <HintPath>..\packages\Concordion.1.5.1\lib\Concordion.dll</HintPath>
-    </Reference>
     <Reference Include="IKVM.OpenJDK.Core">
       <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
     </Reference>
@@ -70,6 +67,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Concordion\Concordion.csproj">
+      <Project>{9d02102b-e1dd-48c8-a0ae-e16cde7453ab}</Project>
+      <Name>Concordion</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XOM.Adapter\XOM.Adapter.csproj">
       <Project>{7e03e1c4-da4d-4216-9a86-11e49e648dd3}</Project>
       <Name>XOM.Adapter</Name>

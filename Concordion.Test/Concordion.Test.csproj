@@ -53,9 +53,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Concordion">
-      <HintPath>..\packages\Concordion.1.5.1\lib\Concordion.dll</HintPath>
-    </Reference>
     <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
       <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
       <Private>True</Private>
@@ -115,6 +112,10 @@
     <ProjectReference Include="..\Concordion.NET\Concordion.NET.csproj">
       <Project>{28a6b922-39b7-4703-abcc-103352537ef2}</Project>
       <Name>Concordion.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Concordion\Concordion.csproj">
+      <Project>{9d02102b-e1dd-48c8-a0ae-e16cde7453ab}</Project>
+      <Name>Concordion</Name>
     </ProjectReference>
     <ProjectReference Include="..\XOM.Adapter\XOM.Adapter.csproj">
       <Project>{7e03e1c4-da4d-4216-9a86-11e49e648dd3}</Project>

@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordion.Runners.Spec", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XOM.Adapter", "XOM.Adapter\XOM.Adapter.csproj", "{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Concordion", "Concordion\Concordion.csproj", "{9D02102B-E1DD-48C8-A0AE-E16CDE7453AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E03E1C4-DA4D-4216-9A86-11E49E648DD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D02102B-E1DD-48C8-A0AE-E16CDE7453AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D02102B-E1DD-48C8-A0AE-E16CDE7453AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D02102B-E1DD-48C8-A0AE-E16CDE7453AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D02102B-E1DD-48C8-A0AE-E16CDE7453AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

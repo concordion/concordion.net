@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C57B6220-6CE6-4165-9144-214BE62CE074}</ProjectGuid>
+    <ProjectGuid>{9D02102B-E1DD-48C8-A0AE-E16CDE7453AB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Concordion.Runners</RootNamespace>
-    <AssemblyName>Concordion.Runners</AssemblyName>
+    <RootNamespace>Concordion</RootNamespace>
+    <AssemblyName>Concordion</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -21,7 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,41 +30,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Core" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="NUnit\ExecutableSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+    <Content Include="Concordion.jar" />
+    <Content Include="xom.jar" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="NUnit\ExecutableSpecification.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Concordion.NET\Concordion.NET.csproj">
-      <Project>{28a6b922-39b7-4703-abcc-103352537ef2}</Project>
-      <Name>Concordion.NET</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Concordion\Concordion.csproj">
-      <Project>{9d02102b-e1dd-48c8-a0ae-e16cde7453ab}</Project>
-      <Name>Concordion</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XOM.Adapter\XOM.Adapter.csproj">
-      <Project>{7e03e1c4-da4d-4216-9a86-11e49e648dd3}</Project>
-      <Name>XOM.Adapter</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>del /Q $(TargetDir)
+ikvmc $(ProjectDir)xom.jar -target:library
+ikvmc $(ProjectDir)Concordion.jar -target:library -r:$(TargetDir)xom.dll
+del $(TargetDir)xom.dll</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
