@@ -1,4 +1,4 @@
-[![GitHub Version](https://img.shields.io/github/release/concordion/concordion-net.svg)](https://github.com/concordion/concordion-net/releases/latest)
+[![GitHub Version](https://img.shields.io/github/release/concordion/concordion.net.svg)](https://github.com/concordion/concordion.net/releases/latest)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/Concordion.NET.svg)](https://www.nuget.org/packages/Concordion.NET/)
 [![Apache License 2.0](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
