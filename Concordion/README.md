@@ -14,7 +14,7 @@ This project is based on the ATDD / BDD framework [Concordion](http://www.concor
 To build the Concordion.dll for the .NET platform, you have to copy the jar files into this Visual Studio project.
 
 1. [download Concordion](http://concordion.org/Download.html)
-2. extract the jar files from the zip file, copy them into this project, and rename them to match the csproj definition
+2. extract the jar files from the zip file, copy them into this project, and rename them to match the csproj definition (currently the following branch of Concordion is used: https://github.com/concordion/concordion/tree/IKVM-Base_1.5.1)
   * concordion-1.5.1.jar -> Concordion.jar
   * xom-1.2.5 -> xom.jar
 
