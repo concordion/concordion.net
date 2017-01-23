@@ -3,6 +3,7 @@
 Welcome to Concordion.NET.
 
 This project is based on the ATDD / BDD framework [Concordion](http://www.concordion.org/) written in Java. [IKVM.NET](http://www.ikvm.net/) is used to port the Java implementation to the .NET platform. The Java bytecode of Concordion is cross-compiled with [ikvmc](https://sourceforge.net/p/ikvm/wiki/Ikvmc/) to a .NET dll.
+You need this project only to rebuild the Concordion.dll from the Java implementation. All other projects use the Concordion.dll from the nuget package.
 
 ## Download and Install IKVM
 
@@ -18,4 +19,8 @@ To build the Concordion.dll for the .NET platform, you have to copy the jar file
   * concordion-1.5.1.jar -> Concordion.jar
   * xom-1.2.5 -> xom.jar
 
-You are ready to work develop Concordion.NET with Visual Studio:-)
+## Build Concordion.dll
+
+1. To build the Concordion.dll run the build.cmd command.
+
+Concordion.dll is available at bin\Debug :-)

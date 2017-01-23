@@ -41,15 +41,10 @@
     <Content Include="xom.jar" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="build.cmd" />
     <None Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>del /Q $(TargetDir)
-ikvmc $(ProjectDir)xom.jar -target:library
-ikvmc $(ProjectDir)Concordion.jar -target:library -r:$(TargetDir)xom.dll
-del $(TargetDir)xom.dll</PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
