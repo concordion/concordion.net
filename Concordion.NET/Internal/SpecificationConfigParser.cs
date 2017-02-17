@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using Concordion.NET.Internal.Runner;
 
 namespace Concordion.NET.Internal
 {
@@ -110,8 +109,6 @@ namespace Concordion.NET.Internal
         /// <param name="element">The element.</param>
         private void LoadRunners(XElement element)
         {
-            Config.AddRunner("concordion.net", typeof(DefaultConcordionRunner).AssemblyQualifiedName);
-            
             var runners = element.Element("Runners");
             if (runners == null) return;
 

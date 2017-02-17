@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Concordion.NET.Internal.Runner;
 
 namespace Concordion.NET.Internal
 {
@@ -55,6 +56,7 @@ namespace Concordion.NET.Internal
             this.BaseOutputDirectory = Environment.GetEnvironmentVariable("TEMP");
             this.SpecificationFileExtensions = new List<string> {"html"};
             this.ConcordionExtensions = new Dictionary<string, string>();
+            this.AddRunner("concordion.net", typeof(DefaultConcordionRunner).AssemblyQualifiedName);
         }
 
         #endregion
