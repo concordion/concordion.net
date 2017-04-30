@@ -1,0 +1,17 @@
+install:
+  - choco install gitversion.portable -pre -y
+
+before_build:
+  - nuget.exe restore Concordion.sln -verbosity detailed
+  - ps: gitversion /l console /output buildserver
+
+build:
+  project: Concordion.sln
+
+configuration:
+  - Release
+
+notifications:
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: true
