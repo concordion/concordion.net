@@ -1,17 +1,16 @@
 install:
   - choco install gitversion.portable -pre -y
   - choco install ikvm
-  - ps: |
-      Start-FileDownload 'https://github.com/concordion/concordion.net/files/695457/Concordion_1.5.1-IKVM-Base.zip'
-      if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
-  - ps: |
-      Expand-Archive Concordion_1.5.1-IKVM-Base.zip -DestinationPath .
-      if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
-  - cmd: dir /s /b
+  - ps: Start-FileDownload 'https://github.com/concordion/concordion.net/files/695457/Concordion_1.5.1-IKVM-Base.zip'
+  - ps: Expand-Archive Concordion_1.5.1-IKVM-Base.zip -DestinationPath .
 
 before_build:
   - nuget.exe restore Concordion.sln -verbosity detailed
   - ps: gitversion /l console /output buildserver
+  - cmd: ikvmc xom.jar -target:library -out:xom.dll
+  - cmd: ikvmc Concordion.jar -target:library -out:Concordion.dll
+  - cmd: del Concordion_1.5.1-IKVM-Base.zip xom.jar Concordion.jar
+  - cmd: dir /s /b
 
 build:
   project: Concordion.sln
