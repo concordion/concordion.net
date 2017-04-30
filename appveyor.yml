@@ -2,7 +2,7 @@ install:
   - choco install gitversion.portable -pre -y
   - choco install ikvm
   - ps: |
-      ps: Start-FileDownload 'https://github.com/concordion/concordion.net/files/695457/Concordion_1.5.1-IKVM-Base.zip'
+      Start-FileDownload 'https://github.com/concordion/concordion.net/files/695457/Concordion_1.5.1-IKVM-Base.zip'
       if ($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode)  }
   - cmd: dir /s /b
   - ps: |
