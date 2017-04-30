@@ -1,0 +1,9 @@
+language: csharp
+solution: Concordion.sln
+sudo: false
+install:
+  - nuget restore Concordion.sln
+  - nuget install NUnit.Runners -Version 3.2.1 -OutputDirectory ./packages
+  - find .
+script:
+  - xbuild Concordion.sln /property:Configuration="Release" /verbosity:detailed
