@@ -1,12 +1,12 @@
 install:
   - choco install gitversion.portable -pre -y
   - choco install ikvm
+  - ps: (new-object net.webclient).DownloadFile('https://github.com/concordion/concordion.net/files/695457/Concordion_1.5.1-IKVM-Base.zip', 'Concordion.zip')
+  - ps: Expand-Archive Concordion.zip -DestinationPath Concordion
 
 before_build:
   - nuget.exe restore Concordion.sln -verbosity detailed
   - ps: gitversion /l console /output buildserver
-  - ps: wget https://github.com/concordion/concordion.net/files/695457/Concordion_1.5.1-IKVM-Base.zip -OutFile Concordion.zip
-  - ps: Expand-Archive Concordion.zip -DestinationPath Concordion
 
 build:
   project: Concordion.sln
