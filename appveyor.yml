@@ -14,9 +14,6 @@ before_build:
 
 build:
   project: Concordion.sln
-  
-after_build:
-  - cmd: Concordion\build.cmd
 
 configuration:
   - Release
